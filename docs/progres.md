@@ -42,3 +42,12 @@ I use fish as the shell and starship for configuration, so I configured the cont
 
 ### **AI Usage**: 
 * Helped with Ubuntu container shell integration
+
+## Tuesday, 20th of January
+**Focus**: Question 2 (Source Control Management)
+
+### **2. Source Control Management**
+1. Took too long on this question, learnt merge, squash, rebase when it would've been discussed on 3... Oh well.
+
+### **AI Usage**
+* Helped with understanding rebase, merge, squash

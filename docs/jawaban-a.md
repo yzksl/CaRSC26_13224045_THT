@@ -20,3 +20,12 @@ Example: ![Image of git rebase]()
 ### LearnGIT
 ![Image of main completion](../lampiran/learngit_main.png)
 ![Image of remote completion](../lampiran/learngit_remote.png)
+
+### Git - GitHub using SSH
+SSH is a way to connect securely between computers/services with a pair of keys. One of them is public, can be accessed by any, acts as a lock, while the other is private, acts as a key. [[5]](https://www.w3schools.com/git/git_security_ssh.asp?remote=github) 
+SSH public key can be added to a GitHub account, and you can access and modify repositories of that account with Git over SSH without using username and password. [[6]](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh)
+
+w3school exercise:
+![Image of w3school SSH exercise completion](../lampiran/w3_ssh.png)
+
+###
