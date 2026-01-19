@@ -16,3 +16,7 @@ Example: ![Image of git rebase]()
 
 ### Git and VSCode Integration with GitHub
 ![Image of Source Control](../lampiran/source_control.png)
+
+### LearnGIT
+![Image of main completion](../lampiran/learngit_main.png)
+![Image of remote completion](../lampiran/learngit_remote.png)
