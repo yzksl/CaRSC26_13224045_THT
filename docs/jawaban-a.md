@@ -13,3 +13,6 @@ Example: ![Image of git merge]()
 Example: ![Image of git rebase]()
 
 * `git log`: show list of commits in current branch's history [[4]](https://education.github.com/git-cheat-sheet-education.pdf). Example: ![Image of git log](../lampiran/o_git_log.png)
+
+### Git and VSCode Integration with GitHub
+![Image of Source Control](../lampiran/source_control.png)
