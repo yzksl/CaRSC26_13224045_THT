@@ -41,3 +41,15 @@ Look at the [following](https://docs.google.com/document/d/1BIlF2uRbo29JuuXp26Ce
 The mission is specified to survey a field of 80x100m area.  
 Waypoints are added based on distance from last waypoint, making a rectangle. Then, a polygon is drawn from the waypoints, and the mission waypoints are auto generated using the Auto WP --> Survey (Grid) [[7]](https://ardupilot.org/copter/docs/common-planning-a-mission-with-waypoints-and-events.html#auto-grid). ![Image of MP UI when making auto grid](../lampiran/mp_survey.png)  
 [Here](../src/a/2/survey_80x100.waypoints) is the waypoint file.
+
+
+## Development Environment
+Ubuntu 22.04 LTS is installed in a distrobox container inside an Arch Linux host. ![Image of Ubuntu container](../lampiran/ubuntu_container.png)
+
+#### Dependency installation
+![1st image of python3, etc installation](../lampiran/install_dep_1.png)  
+Lots of log output, and finally the last few outputs are...  
+![2nd image of python3, etc installation](../lampiran/install_dep_2.png)
+
+#### ROS2 Humble and Talker-Listener System
+![Talker-Listener ROS2 system](../lampiran/ros2_talker-listener.png)
