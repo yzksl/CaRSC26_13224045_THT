@@ -53,3 +53,6 @@ Lots of log output, and finally the last few outputs are...
 
 #### ROS2 Humble and Talker-Listener System
 ![Talker-Listener ROS2 system](../lampiran/ros2_talker-listener.png)
+
+## Basics of UAV
+Look at the [following](https://docs.google.com/document/d/1BIlF2uRbo29JuuXp26CezTWbTK-1dVvzyV7rmqaYIOU/) for the answer
