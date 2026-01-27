@@ -56,3 +56,50 @@ Lots of log output, and finally the last few outputs are...
 
 ## Basics of UAV
 Look at the [following](https://docs.google.com/document/d/1BIlF2uRbo29JuuXp26CezTWbTK-1dVvzyV7rmqaYIOU/) for the answer
+
+## Algorithms
+
+#### A* [[8](https://theory.stanford.edu/~amitp/GameProgramming/), [9](https://www.datacamp.com/tutorial/a-star-algorithm)]
+A* is an algorithm used to find the shortest path between two points (guaranteed). It is the most popular choice for pathfinding because it's farly flexible and can be used in a wide range of contexts, such as there being obstacles.  
+A* is **a combination of the Dijkstra Algorithm and Greedy Best-First-Search**. As a reminder, Dijkstra's Algorithm finds the shortest path by **examining the closest not-yet-examined vertex**, choosing it, and repeat until it reaches the goal, while the greedy Best-First-Search algorithm works with an **estimate (_heuristic_) of how far from the goal any vertex is**, chooses the vertex closest to the goal, until it reaches the goal. The following is the difference between Dijkstra and Greedy Best-First-Search:  
+* Djikstra (no obstacles) ![Image of Dijkstra Algorithm no obstacles](../lampiran/djikstra_no-obs.png)
+* Djikstra (obstacles) ![Image of Dijkstra Algorithm obstacles](../lampiran/djikstra_obs.png)
+* Best-First-Search (no obstacles) ![Image of Best-First-Search Algorithm no obstacles](../lampiran/bestfs_no-obs.png)
+* Best-First-Search (obstacles) ![Image of Best-First-Search Algoirthm obstacles](../lampiran/bestfs-obs.png)
+
+Notice that Dijkstra **fares a lot better on a non-ideal condition but uses a lot of resources, while Best-First-Search is the opposite**. A* aims to get the best of both worlds. ![Image of A* obstacles](../lampiran/a_star_obs.png)
+
+A*'s efficiency comes from its smart cost calculation using three components:
+``` 
+f(n) = g(n) + h(n)
+```
+* g(n): exact cost of the path from the starting point to any vertex n
+* h(n): heuristic estimated cost of the path from vertex n to the goal
+
+The image above shows the two components, with yellow being high h, teal being high g. Both components guide it to the end point. A* examines the vertex n that has the lowest f(n), chooses it, repeats, until it reaches the goal.
+
+The heuristic function `h(n)` controls A*'s behavior. The lower the h(n) value (and less or equal to the actual cost), the more inefficient but guarantees a shortest path (like Dijkstra's Algorithm), while the higher the h(n) (and more than the actual cost), the more efficient but does not guarantee a shortest path (like Best-First-Search). An ideal heuristic function is an exact one.  
+Finding the exact heuristic can be done by computing length of shortest path between every pair of points if possible, or approximating it by doing precomputing with overlaying another "coarse" grid on top of the actual grid and find the shortest path between any pair of points in the "coarse" grid.  
+We choose heuristic functions based on the grid and its rules. For example...
+* square grid with 4 DoF: use Manhattan Distance  
+  `h(n) = D * (|x_1 - x_2| + |y_1 - y_2|)`
+* square grid with 8 DoF: use Diagonal Distance
+* square grid with any direciton of movement: use Euclidian Distance  
+  `h(n) = D * sqrt((x_1 - x_2)^2 + (y_1 - y_2)^2)`
+* hexagon grid with 6 DoF: use Manhattan Distance adapted to hexagonal grids.
+
+> [!NOTE]
+> Do not use Squared Euclidiean Distance, because it runs into a scaling problem (like, mismatch of unit)
+
+#### D* [[9](https://www.ri.cmu.edu/pub_files/pub3/stentz_anthony__tony__1994_2/stentz_anthony__tony__1994_2.pdf)]
+D* is A* but **dynamic**, costs can change in the middle of traversion. When the robot has the layout of the map including the obstacles, but there's actually an obstacle where it is only detected when it gets to a certain point, D* allows the robot to update the shortest path from that point, while A* requires it to re-search. Another difference is that A* plans from start to goal, while D* ancrhors its search at the Goal. Every vertex at the map points to the next vertex that gets it closer to the goal (backpointers).  
+In A*, you sort vertices by `f(n) = g(n) + h(n)`, while in D* its sorted by **__k__ values**, the minimum path cost a vertex has has written in a list called OPEN. When a vertex in the minimum path updates and becomes an obstacle (EMPTY (low cost) to OBSTACLE (high cost)), that vertex becomes a RAISE state in the OPEN list, and the vertices that lead to that vertex are also RAISE'd. There will be a vertex and path which leads around the obstacle, doesn't point to the obstacle, which becomes a LOWER state.
+
+#### PID
+Check the AHC THT.
+
+#### Kalman Filter
+The Kalman Filter is a generic algorithm that **estimates system parameters that are observed or not observed**. It takes inputs that are usually noisy and inaccurate, and output something less noisy and usually more accurate estimates (the state). It can be used for the following:
+* Object tracking - uses measured position to estimate position and velocity
+* Guidance, navigation, and control - uses IMU sensors to estimate the object's location, velocity, acceleration, I assume attitude, and use them for the next moves
+
